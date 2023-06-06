@@ -1,7 +1,11 @@
-const {Router} = require('express')
-const controller = require('../controllers/vianda.controller')
-const route = Router()
+const express = require('express')
+//const {Router} = require('express')
+const {getViandas, getViandasByCodigo, updateVianda} = require('../controllers/viandasController')
+const viandasRoute = express.Router()
 
-route.get("/", controller.getViandas)
+viandasRoute.get("/", getViandas)
+viandasRoute.get("/:codigo", getViandasByCodigo)
+viandasRoute.put("/:codigo", updateVianda)
+//viandasRoute.post("/:codigo", createVianda)
 
-module.exports = route
+module.exports = viandasRoute
