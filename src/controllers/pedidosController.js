@@ -22,12 +22,33 @@ const updatePedido = (req, res) => {
     const {dni, tipo} = req.body
     const alumnoIdx = alumnos.findIndex((al) => al.dni == dni && al.habilitado)
     if (alumnoIdx == -1){
-        res.status(httpStatusCodes.HTTP_STATUS_BAD_REQUEST).json({mensaje: `El alumno con DNI ${dni} ya se encuentra registrado o esta inhabilitado`})
+        res.status(httpStatusCodes.HTTP_STATUS_BAD_REQUEST).json({mensaje: `El alumno con DNI ${dni} no se registrado o esta inhabilitado`})
         return
     }
     let alumno = {...alumnos[alumnoIdx]}
     delete alumno.habilitado
+    if (alumno.habilitado ){
+        
+    }
+
+    let newPedido ={
+        id,
+        fecha,
+        alumno: {
+            dni,
+            nombre,
+            celiaco,
+            edad
+        },
+        vianda:{
+            codigo,
+            tipo,
+            aptoCeliaco,
+            descripcion
+        }
+    }
 }
+
 
 
 
