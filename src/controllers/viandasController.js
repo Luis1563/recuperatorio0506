@@ -42,6 +42,20 @@ const createVianda = (req, res) => {
         return
     }
     
+    const codigoRegex = /^V[A-Z]{4}$/
+    if (!codigoRegex.test(codigo)){
+        res.status(httpStatusCodes.HTTP_STATUS_BAD_REQUEST).json({error: 'El código debe tener el formato VXXXX'})
+        return
+    }
+    let resultado = viandas.map((v) => v.stock == 0)
+
+    const newVianda = {
+        codigo,
+        tipo,
+        aptoCeliaco,
+        stock,
+        descripcion
+    }
 }
 
 
